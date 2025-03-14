@@ -1,0 +1,4 @@
+# Custom labels
+custom_labels/*.json 
+
+**/.DS_Store

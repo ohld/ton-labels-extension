@@ -1,0 +1,36 @@
+{
+  "manifest_version": 3,
+  "name": "TON Address Labels",
+  "version": "1.0",
+  "description": "Displays labels for TON blockchain addresses on tonviewer.com",
+  "permissions": [
+    "storage"
+  ],
+  "host_permissions": [
+    "https://tonviewer.com/*",
+    "https://raw.githubusercontent.com/*"
+  ],
+  "web_accessible_resources": [
+    {
+      "resources": [
+        "custom_labels/*.json"
+      ],
+      "matches": [
+        "https://tonviewer.com/*"
+      ]
+    }
+  ],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "https://tonviewer.com/*"
+      ],
+      "js": [
+        "content.js"
+      ]
+    }
+  ]
+}
