@@ -1,6 +1,8 @@
 # TON Address Labels Chrome Extension
 
-This Chrome extension enhances the browsing experience on tonviewer.com by displaying human-readable labels for TON blockchain addresses. It automatically fetches and updates a database of address labels from a public repository.
+This Chrome extension enhances the browsing experience on tonviewer.com by adding labels for TON blockchain addresses from [ton-studio/ton-labels](https://github.com/ton-studio/ton-labels) and a custom local file. It also removes `scam` and `suspicious` transactions from the list.
+
+![TON Address Labels Extension](images/image.png)
 
 ## Features
 
