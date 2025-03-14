@@ -12,7 +12,7 @@ This Chrome extension enhances the browsing experience on tonviewer.com by displ
 ## Installation
 
 1. Clone this repository or download the source code
-2. Open Chrome/Arc/Any browser that supports Chrome extensions and navigate to `chrome://extensions/`
+2. Open Chrome/Arc/Any browser that supports Chrome extensions and navigate to [chrome://extensions/](chrome://extensions/).
 3. Enable "Developer mode" in the top right corner
 4. Click "Load unpacked" and select the extension directory
 
