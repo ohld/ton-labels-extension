@@ -8,13 +8,29 @@ This Chrome extension enhances the browsing experience on tonviewer.com by displ
 - Periodically updates the labels database (every 24 hours)
 - Works with dynamically loaded content
 - Uses local storage for fast label lookups
+- Supports custom labels through a local configuration file
 
 ## Installation
 
 1. Clone this repository or download the source code
-2. Open Chrome/Arc/Any browser that supports Chrome extensions and navigate to `chrome://extensions/`
+2. Open Chrome-based browser and navigate to `chrome://extensions/`
 3. Enable "Developer mode" in the top right corner
 4. Click "Load unpacked" and select the extension directory
+
+## Custom Labels
+
+To add your own custom labels:
+
+1. Copy the example file: `cp custom_labels.example.json custom_labels.json`
+2. Edit `custom_labels.json` and add your labels in the format:
+```json
+{
+    "UQDSE2BHJi4Qowu4jgvqQ3_4-KFrR2x6DqPzFkMGczCgoLcK": "Label Name"
+}
+```
+3. Reload the extension to apply your changes
+
+Your custom labels will take precedence over the public labels database.
 
 ## Development
 

@@ -27,45 +27,18 @@ async function fetchAndStoreTonLabels() {
             }
         });
 
-        // Get list of all JSON files in custom_labels directory
-        const customLabelFiles = await new Promise((resolve) => {
-            chrome.runtime.getPackageDirectoryEntry((root) => {
-                root.getDirectory('custom_labels', {}, (dir) => {
-                    const reader = dir.createReader();
-                    const results = [];
-
-                    function readEntries() {
-                        reader.readEntries((entries) => {
-                            if (entries.length) {
-                                entries.forEach((entry) => {
-                                    if (entry.isFile && entry.name.endsWith('.json')) {
-                                        results.push(entry.name);
-                                    }
-                                });
-                                readEntries(); // Continue reading if there are more entries
-                            } else {
-                                resolve(results);
-                            }
-                        });
-                    }
-
-                    readEntries();
-                });
-            });
-        });
-
-        // Load each custom labels file
-        for (const filename of customLabelFiles) {
-            try {
-                const response = await fetch(chrome.runtime.getURL(`custom_labels/${filename}`));
-                const customLabels = await response.json();
-
-                // Merge labels, giving priority to later files
+        // Try to load custom labels file
+        try {
+            const customResponse = await fetch(chrome.runtime.getURL('custom_labels.json'));
+            if (customResponse.ok) {
+                const customLabels = await customResponse.json();
+                // Merge labels, giving priority to custom labels
                 mergedLabels = { ...mergedLabels, ...customLabels };
-                console.log(`Loaded custom labels from ${filename}`);
-            } catch (error) {
-                console.error(`Error loading custom labels from ${filename}:`, error);
+                console.log('Loaded custom labels file');
             }
+        } catch (error) {
+            // This is expected if the file doesn't exist, so we'll just log it at debug level
+            console.debug('No custom labels file found (this is normal if you haven\'t created one)');
         }
 
         // Store in Chrome's storage

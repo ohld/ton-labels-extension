@@ -13,7 +13,7 @@
   "web_accessible_resources": [
     {
       "resources": [
-        "custom_labels/*.json"
+        "custom_labels.json"
       ],
       "matches": [
         "https://tonviewer.com/*"
